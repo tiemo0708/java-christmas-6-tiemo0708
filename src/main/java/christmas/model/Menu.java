@@ -18,12 +18,10 @@ public class Menu {
     public void orderMenu(List<String> OrderMenus){
 
         for(String OrderMenu:OrderMenus){
-
             int idx = OrderMenu.indexOf("-");
             List<Foods> foodName=foods.stream()
                     .filter(i -> i.getName().equals(OrderMenu.substring(0,idx)))
                     .toList();
-
             foodName.get(0).setCount(Integer.parseInt(OrderMenu.substring(idx+1)));
 
 //            addOrder(OrderMenu.substring(0,idx));
@@ -32,7 +30,11 @@ public class Menu {
 
         }
     }
-
+    public List<Foods> getMenu() {
+        return foods.stream()
+                .filter(i -> i.getCount()>0)
+                .toList();
+    }
 
 
 

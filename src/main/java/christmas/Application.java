@@ -11,5 +11,7 @@ public class Application {
         christmasController.greet();
         christmasController.readDate();
         christmasController.readMenu();
+        christmasController.printDate();
+        christmasController.printMenu();
     }
 }

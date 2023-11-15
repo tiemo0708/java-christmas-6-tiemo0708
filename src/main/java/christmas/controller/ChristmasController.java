@@ -23,4 +23,12 @@ public class ChristmasController {
         menu.orderMenu(inputView.readMenu());
 
     }
+    public void printDate(){
+        output.printDate(christmasEvent.getDate());
+    }
+
+    public void printMenu(){
+        output.printMenu(menu.getMenu());
+
+    }
 }
