@@ -10,5 +10,6 @@ public class Application {
         ChristmasController christmasController = new ChristmasController();
         christmasController.greet();
         christmasController.readDate();
+        christmasController.readMenu();
     }
 }
