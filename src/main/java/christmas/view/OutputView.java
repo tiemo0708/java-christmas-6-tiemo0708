@@ -12,12 +12,22 @@ public class OutputView {
 
     public void printDate(int date){
         System.out.println("12월 "+date+"에 우테코 식당에서 받을 이벤트 혜택 미리보기" );
+        System.out.println();
     }
     public void printMenu(List<Foods> menu) {
         System.out.println("<주문 메뉴>");
         for(Foods foods : menu){
             System.out.println(foods.getName()+" "+foods.getCount()+"개");
         }
+        System.out.println();
+    }
+
+    public void printAfterDiscount(List<Foods> menu) {
+        System.out.println("<할인 전 총주문 금액>");
+        for (Foods foods : menu) {
+            System.out.println(foods.getPrice() * foods.getCount() + "원");
+        }
+        System.out.println();
     }
     // ...
 }

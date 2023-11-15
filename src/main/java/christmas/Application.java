@@ -13,5 +13,6 @@ public class Application {
         christmasController.readMenu();
         christmasController.printDate();
         christmasController.printMenu();
+        christmasController.printAfterDiscount();
     }
 }
