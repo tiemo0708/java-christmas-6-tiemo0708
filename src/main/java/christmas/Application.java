@@ -16,5 +16,7 @@ public class Application {
         christmasController.printAfterDiscount();
         christmasController.printPrentationEvent();
         christmasController.printBenefitsDetails();
+        christmasController.printPaymentPrice();
+        christmasController.printBadge();
     }
 }

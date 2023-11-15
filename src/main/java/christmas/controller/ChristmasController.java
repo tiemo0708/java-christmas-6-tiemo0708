@@ -1,9 +1,12 @@
 package christmas.controller;
 
 import christmas.model.ChristmasEvent;
+import christmas.model.Events;
 import christmas.model.Menu;
 import christmas.view.InputView;
 import christmas.view.OutputView;
+
+import java.util.List;
 
 public class ChristmasController {
     InputView inputView = new InputView();
@@ -42,6 +45,16 @@ public class ChristmasController {
     }
 
     public void printBenefitsDetails() {
-        output.printBenefitsDetails(christmasEvent.classification());
+        List<Events> classification=  christmasEvent.classification();
+        output.printBenefitsDetails(classification,menu.getMenuPrice());
+        christmasEvent.setClassification(classification);
+    }
+
+    public void printPaymentPrice() {
+        output.printPaymentPrice(menu.getMenuPrice(),christmasEvent.classification());
+    }
+
+    public void printBadge() {
+        output.printBadge(christmasEvent.badge());
     }
 }

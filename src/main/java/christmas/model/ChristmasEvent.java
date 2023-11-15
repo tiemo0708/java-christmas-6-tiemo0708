@@ -8,6 +8,8 @@ import java.time.LocalDate;
 public class ChristmasEvent {
     private int date;
     private static final List<Events> eventsDiscount = new ArrayList<>();
+    private int discountSum;
+
     public ChristmasEvent(){
 
     }
@@ -62,4 +64,24 @@ public class ChristmasEvent {
     }
 
 
+    public void setClassification(List<Events> classification) {
+        for(Events events : classification){
+            this.discountSum +=events.getAmount();
+        }
+
+    }
+
+
+    public String badge() {
+        if(this.discountSum>=20000){
+            return "산타";
+        }
+        if (this.discountSum>=10000){
+            return "트리";
+        }
+        if(this.discountSum>=5000){
+            return "별";
+        }
+        return "없음";
+    }
 }

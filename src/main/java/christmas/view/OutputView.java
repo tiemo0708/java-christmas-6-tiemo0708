@@ -3,10 +3,11 @@ package christmas.view;
 import christmas.model.Events;
 import christmas.model.Foods;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 public class OutputView {
-
+    NumberFormat numberFormat = NumberFormat.getInstance();
     public void greet(){
         System.out.println("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
     }
@@ -25,7 +26,7 @@ public class OutputView {
 
     public void printAfterDiscount(int price) {
         System.out.println("<할인 전 총주문 금액>");
-        System.out.println(price+"원");
+        System.out.println(numberFormat.format(price)+"원");
         System.out.println();
     }
 
@@ -35,11 +36,28 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printBenefitsDetails(List<Events> classification) {
-        System.out.println("<헤택 내역>");
+    public void printBenefitsDetails(List<Events> classification, int menuPrice) {
+        System.out.println("<혜택 내역>");
+        int discountSum=0;
         for(Events events : classification){
-            System.out.println(events.getDiscountKind()+": -"+events.getAmount());
+            discountSum+=events.getAmount();
+            System.out.println(events.getDiscountKind()+": -"+numberFormat.format(events.getAmount()));
         }
+        System.out.println();
+        System.out.println("<총혜택 금액>");
+        System.out.println("-"+numberFormat.format(discountSum));
+        System.out.println();
+        System.out.println("<할인 후 예상 결제 금액>");
+        System.out.println(numberFormat.format(menuPrice-discountSum)+"원");
+        System.out.println();
+    }
+
+    public void printPaymentPrice(int menuPrice, List<Events> classification) {
+    }
+
+    public void printBadge(String badge) {
+        System.out.println("<12월 이벤트 배지>");
+        System.out.println(badge);
     }
     // ...
 }
