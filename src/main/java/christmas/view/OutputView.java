@@ -1,5 +1,6 @@
 package christmas.view;
 
+import christmas.model.Events;
 import christmas.model.Foods;
 
 import java.util.List;
@@ -32,6 +33,13 @@ public class OutputView {
         System.out.println("<증정 메뉴>");
         System.out.println(presentationEvent);
         System.out.println();
+    }
+
+    public void printBenefitsDetails(List<Events> classification) {
+        System.out.println("<헤택 내역>");
+        for(Events events : classification){
+            System.out.println(events.getDiscountKind()+": -"+events.getAmount());
+        }
     }
     // ...
 }

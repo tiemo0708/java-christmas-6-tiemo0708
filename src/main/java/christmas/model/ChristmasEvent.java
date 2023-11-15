@@ -2,6 +2,8 @@ package christmas.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 
 public class ChristmasEvent {
     private int date;
@@ -10,20 +12,34 @@ public class ChristmasEvent {
 
     }
 
-    public void classification(int date) {
-        this.date = date;
-        eventsDiscount.add(dayEvent(date));
-        eventsDiscount.add(weekDayEvent(date));
-        eventsDiscount.add(weekendDatEvent(date));
-
+    public List<Events> classification() {
+        eventsDiscount.add(dayEvent(this.date));
+        eventsDiscount.add(dayOfWeekEvent(this.date));
+        eventsDiscount.add(SpecialEvent(this.date));
+        return eventsDiscount.stream()
+                .filter(i -> !i.getDiscountKind().equals("없음"))
+                .toList();
     }
 
-    private Events weekendDatEvent(int i) {
-        return  null;
+    private Events SpecialEvent(int date) {
+        if(date==3||date==10||date==17||date==24||date==25||date==31){
+            return Events.SPECIAL_DISCOUNT;
+        }
+        return Events.NO_EVENTS;
     }
 
-    private Events weekDayEvent(int i) {
-        return null;
+    private Events dayOfWeekEvent(int day) {
+       checkDayOfWeek(day);
+        if(day==5||day==6){
+            return Events.WEEKEND_DISCOUNT;
+        }
+        return Events.WEEKDAY_DISCOUNT;
+    }
+
+    private int checkDayOfWeek(int date) {
+        LocalDate weekDate = LocalDate.of(2023, 12, date);
+        DayOfWeek dayOfWeek = weekDate.getDayOfWeek();
+        return dayOfWeek.getValue();
     }
 
     public Events dayEvent(int i){
@@ -36,9 +52,14 @@ public class ChristmasEvent {
     public int getDate(){
         return this.date;
     }
+    public void setDate(int date) {
+        this.date = date;
+    }
 
 
     public void presentationEvent(Events events) {
         eventsDiscount.add(events);
     }
+
+
 }

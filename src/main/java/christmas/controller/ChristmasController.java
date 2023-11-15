@@ -17,7 +17,7 @@ public class ChristmasController {
         output.greet();
     }
     public void readDate() {
-        christmasEvent.classification(Integer.parseInt(inputView.readDate()));
+        christmasEvent.setDate(Integer.parseInt(inputView.readDate()));
     }
     public void readMenu() {
         menu.orderMenu(inputView.readMenu());
@@ -39,5 +39,9 @@ public class ChristmasController {
         output.printPresent(menu.getPresentationEvent());
 
 
+    }
+
+    public void printBenefitsDetails() {
+        output.printBenefitsDetails(christmasEvent.classification());
     }
 }
