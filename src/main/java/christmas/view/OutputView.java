@@ -22,11 +22,15 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printAfterDiscount(List<Foods> menu) {
+    public void printAfterDiscount(int price) {
         System.out.println("<할인 전 총주문 금액>");
-        for (Foods foods : menu) {
-            System.out.println(foods.getPrice() * foods.getCount() + "원");
-        }
+        System.out.println(price+"원");
+        System.out.println();
+    }
+
+    public void printPresent(String presentationEvent) {
+        System.out.println("<증정 메뉴>");
+        System.out.println(presentationEvent);
         System.out.println();
     }
     // ...

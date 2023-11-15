@@ -32,6 +32,12 @@ public class ChristmasController {
 
     }
     public void printAfterDiscount(){
-        output.printAfterDiscount(menu.getMenu());
+        output.printAfterDiscount(menu.getMenuPrice());
+    }
+
+    public void printPrentationEvent() {
+        output.printPresent(menu.getPresentationEvent());
+
+
     }
 }
