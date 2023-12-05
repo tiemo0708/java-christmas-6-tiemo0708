@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 
-import static christmas.global.ERROR.INVALID_DATE;
+import static christmas.global.Error.INVALID_DATE;
 
 public class InputView {
     private static final String ASK_DATE = ("%n%d월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)%n");
@@ -25,7 +25,7 @@ public class InputView {
     }
 
 
-    public List<String> readMenu(){
+    public static List<String> askMenu(){
         System.out.println(ASK_MENU);
         return Arrays.asList(Console.readLine().split(","));
     }
