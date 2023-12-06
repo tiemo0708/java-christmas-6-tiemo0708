@@ -10,7 +10,12 @@ public class ChristmasController {
         OutputView.welcomMessage();
         VisitDate visitDate =  askDate();
         askMenu();
+        printDate(visitDate);
 
+    }
+
+    private void printDate(VisitDate visitDate) {
+        OutputView.printDate(visitDate.getDate());
     }
 
     private void askMenu() {
