@@ -1,6 +1,5 @@
 package christmas.domain;
 
-import christmas.controller.ChristmasEvent;
 import christmas.domain.model.Events;
 
 import static christmas.domain.model.Menu.CHAMPAGNE;

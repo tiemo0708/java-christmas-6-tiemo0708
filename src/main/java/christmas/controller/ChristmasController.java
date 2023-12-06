@@ -1,10 +1,14 @@
 package christmas.controller;
 
+import christmas.domain.ChristmasEvent;
 import christmas.domain.Discount;
 import christmas.domain.VisitDate;
+import christmas.domain.model.Events;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 import christmas.domain.Order;
+
+import java.util.List;
 
 public class ChristmasController {
     public void run() {
@@ -15,6 +19,13 @@ public class ChristmasController {
         printMenu();
         printAfterDiscount();
         printPresentationEvent();
+        printBenefitsDetails(visitDate);
+    }
+
+    private void printBenefitsDetails(VisitDate visitDate) {
+        List<Events> classification=  ChristmasEvent.classification(visitDate.getDate());
+        OutputView.printBenefitsDetails(classification,Order.getMenuPrice());
+        ChristmasEvent.setClassification(classification);
     }
 
     private void printPresentationEvent() {
