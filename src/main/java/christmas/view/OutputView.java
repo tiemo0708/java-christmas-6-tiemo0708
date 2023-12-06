@@ -12,6 +12,8 @@ public class OutputView {
     private static final String ORDER_MENU = "%s %s개%n";
     private static final String AFTER_DISCOUNT_MESSAGE="%n<할인 전 총주문 금액>%n";
     private static final String AFTER_DISCOUNT="%s원%n%n";
+    private static final String PRESENT_MESSAGE="<증정 메뉴>";
+
     private static final int MONTH=12;
 
     public static void printError(Exception e) {
@@ -39,5 +41,10 @@ public class OutputView {
         System.out.printf(AFTER_DISCOUNT_MESSAGE);
         System.out.printf(AFTER_DISCOUNT,numberFormat.format(menuPrice));
 
+    }
+
+    public static void printPresentation(String presentationEvent) {
+        System.out.println(PRESENT_MESSAGE);
+        System.out.println(presentationEvent);
     }
 }

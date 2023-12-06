@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.domain.Discount;
 import christmas.domain.VisitDate;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -13,7 +14,11 @@ public class ChristmasController {
         printDate(visitDate);
         printMenu();
         printAfterDiscount();
+        printPresentationEvent();
+    }
 
+    private void printPresentationEvent() {
+        OutputView.printPresentation(Discount.presentationEvent(Order.getMenuPrice()));
     }
 
     private void printAfterDiscount() {
