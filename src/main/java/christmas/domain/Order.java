@@ -17,4 +17,10 @@ public class Order {
             menuName.get(0).setCount(Integer.parseInt(OrderMenu.substring(idx + 1)));
         }
     }
+
+    public static List<Menu> getMenu() {
+        return menus.stream()
+                .filter(i -> i.getCount()>0)
+                .toList();
+    }
 }
