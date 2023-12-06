@@ -10,7 +10,7 @@ import java.util.List;
 public class ChristmasController {
     public void run() {
         OutputView.welcomMessage();
-        VisitDate visitDate =  askDate();
+        VisitDate visitDate = askDate();
         askMenu();
         printDate(visitDate);
         printMenu();
@@ -47,7 +47,13 @@ public class ChristmasController {
     }
 
     private void askMenu() {
-        Order.orderMenu(InputView.askMenu());
+        while(true) {
+            try {
+                Order.orderMenu(InputView.askMenu());
+            }catch (IllegalStateException e) {
+                OutputView.printError(e);
+            }
+        }
     }
 
     private VisitDate askDate() {
