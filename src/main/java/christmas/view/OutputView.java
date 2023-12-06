@@ -15,13 +15,14 @@ public class OutputView {
     private static final String ORDER_MENU = "%s %s개%n";
     private static final String AFTER_DISCOUNT_MESSAGE="%n<할인 전 총주문 금액>%n";
     private static final String AFTER_DISCOUNT="%s원%n%n";
-    private static final String PRESENT_MESSAGE="<증정 메뉴>";
-    private static final String BENEFIT_MESSAGE="<혜택 내역>";
+    private static final String PRESENT_MESSAGE="<증정 메뉴>%n";
+    private static final String BENEFIT_MESSAGE="%n<혜택 내역>%n";
     private static final String BENEFIT_REPORT="%s: -%s%n";
     private static final String BENEFIT_AMOUNT_MESSAGE = "%n<총혜택 금액>%n";
     private static final String BENEFIT_AMOUNT ="-%s%n";
     private static final String PAYMENT_MESSAGE="%n<할인 후 예상 결제 금액>%n";
     private static final String PAYMENT_AMOUNT="%s원%n";
+    private static final String BADGE_MESSAGE="%n<12월 이벤트 배지>%n";
 
     private static final int MONTH=12;
     private static final int ZERO = 0;
@@ -52,12 +53,12 @@ public class OutputView {
     }
 
     public static void printPresentation(String presentationEvent) {
-        System.out.println(PRESENT_MESSAGE);
+        System.out.printf(PRESENT_MESSAGE);
         System.out.println(presentationEvent);
     }
 
     public static void printBenefitsDetails(List<Events> classification, int menuPrice) {
-        System.out.println(BENEFIT_MESSAGE);
+        System.out.printf(BENEFIT_MESSAGE);
         int discountSum=ZERO;
         for(Events events : classification){
             discountSum+=events.getAmount();
@@ -69,5 +70,10 @@ public class OutputView {
         System.out.printf(PAYMENT_AMOUNT,numberFormat.format(menuPrice-discountSum));
 
 
+    }
+
+    public static void printBadge(String badge) {
+        System.out.printf(BADGE_MESSAGE);
+        System.out.println(badge);
     }
 }

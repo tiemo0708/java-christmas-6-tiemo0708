@@ -56,7 +56,12 @@ public class ChristmasEvent {
         }
     }
 
+    public static int getDiscountSum() {
+        return discountSum;
+    }
+
     public void presentationEvent(Events events) {
         eventsDiscount.add(events);
     }
+
 }

@@ -1,12 +1,9 @@
 package christmas.controller;
 
-import christmas.domain.ChristmasEvent;
-import christmas.domain.Discount;
-import christmas.domain.VisitDate;
+import christmas.domain.*;
 import christmas.domain.model.Events;
 import christmas.view.InputView;
 import christmas.view.OutputView;
-import christmas.domain.Order;
 
 import java.util.List;
 
@@ -20,6 +17,11 @@ public class ChristmasController {
         printAfterDiscount();
         printPresentationEvent();
         printBenefitsDetails(visitDate);
+        printBadge();
+    }
+
+    private void printBadge() {
+        OutputView.printBadge(Badge.makeBadge(ChristmasEvent.getDiscountSum()));
     }
 
     private void printBenefitsDetails(VisitDate visitDate) {

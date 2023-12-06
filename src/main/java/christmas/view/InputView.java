@@ -18,7 +18,7 @@ public class InputView {
     }
 
     public static String validateDate(String date) {
-            if(!date.matches("(0[1-9]|[12][0-9]|3[01])")){
+            if(!date.matches("([1-9]|[12][0-9]|3[01])")){
                 throw new IllegalArgumentException(INVALID_DATE.getMessage());
             }
         return date;
