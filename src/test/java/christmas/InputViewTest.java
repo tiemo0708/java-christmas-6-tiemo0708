@@ -21,4 +21,11 @@ class InputViewTest {
          assertThatThrownBy(() -> InputView.validateDate(date))
                  .isInstanceOf(IllegalArgumentException.class);
      }
+    @DisplayName("아무 것도 입력받지 않았을시 예외처리")
+    @ValueSource(strings = {""})
+    @ParameterizedTest
+    void validateNonDate(String date) {
+        assertThatThrownBy(() -> InputView.validateDate(date))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

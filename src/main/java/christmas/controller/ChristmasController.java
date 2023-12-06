@@ -50,6 +50,7 @@ public class ChristmasController {
         while(true) {
             try {
                 Order.orderMenu(InputView.askMenu());
+                break;
             }catch (IllegalStateException e) {
                 OutputView.printError(e);
             }

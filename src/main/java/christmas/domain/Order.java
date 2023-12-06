@@ -21,6 +21,7 @@ public class Order {
                             .toList();
                     menuName.get(0).setCount(Integer.parseInt(OrderMenu.substring(idx + 1)));
                 }
+                break;
             }catch (NumberFormatException | ArrayIndexOutOfBoundsException e){
                 throw new IllegalStateException(INVALID_ORDER.getMessage());
             }catch (StringIndexOutOfBoundsException e){
