@@ -5,6 +5,7 @@ import christmas.domain.model.Menu;
 import java.util.Arrays;
 import java.util.List;
 
+import static christmas.global.Error.BLANK;
 import static christmas.global.Error.INVALID_ORDER;
 
 public class Order {
@@ -22,6 +23,8 @@ public class Order {
                 }
             }catch (NumberFormatException | ArrayIndexOutOfBoundsException e){
                 throw new IllegalStateException(INVALID_ORDER.getMessage());
+            }catch (StringIndexOutOfBoundsException e){
+                throw new IllegalStateException(BLANK.getMessage());
             }
         }
     }
