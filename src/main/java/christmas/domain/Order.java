@@ -23,4 +23,18 @@ public class Order {
                 .filter(i -> i.getCount()>0)
                 .toList();
     }
+
+    public static int getMenuPrice() {
+        return sumPrice(menus.stream()
+                .filter(i -> i.getCount()>0)
+                .toList());
+    }
+
+    private static int sumPrice(List<Menu> menus) {
+        int price =0;
+        for (Menu menu : menus) {
+            price+=menu.getPrice() * menu.getCount();
+        }
+        return price;
+    }
 }

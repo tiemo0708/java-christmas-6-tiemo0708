@@ -12,7 +12,12 @@ public class ChristmasController {
         askMenu();
         printDate(visitDate);
         printMenu();
+        printAfterDiscount();
 
+    }
+
+    private void printAfterDiscount() {
+        OutputView.printAfterDiscount(Order.getMenuPrice());
     }
 
     private void printMenu() {
