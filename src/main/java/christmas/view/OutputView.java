@@ -62,6 +62,10 @@ public class OutputView {
         int discountSum=ZERO;
         for(Events events : classification){
             discountSum+=events.getAmount();
+            if(events.getAmount()==ZERO){
+                System.out.println(events.getDiscountKind());
+                break;
+            }
             System.out.printf(BENEFIT_REPORT,events.getDiscountKind(),numberFormat.format(events.getAmount()));
         }
         System.out.printf(BENEFIT_AMOUNT_MESSAGE);

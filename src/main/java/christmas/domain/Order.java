@@ -5,6 +5,7 @@ import christmas.domain.model.Menu;
 import java.util.Arrays;
 import java.util.List;
 
+import static christmas.domain.model.MenuCategory.DRINK;
 import static christmas.global.Error.BLANK;
 import static christmas.global.Error.INVALID_ORDER;
 
@@ -12,7 +13,6 @@ public class Order {
     static List<Menu> menus = Arrays.asList(Menu.values());
 
     public static void orderMenu(List<String> OrderMenus) {
-        while(true) {
             try {
                 for (String OrderMenu : OrderMenus) {
                     int idx = OrderMenu.indexOf("-");
@@ -21,14 +21,13 @@ public class Order {
                             .toList();
                     menuName.get(0).setCount(Integer.parseInt(OrderMenu.substring(idx + 1)));
                 }
-                break;
             }catch (NumberFormatException | ArrayIndexOutOfBoundsException e){
                 throw new IllegalStateException(INVALID_ORDER.getMessage());
             }catch (StringIndexOutOfBoundsException e){
                 throw new IllegalStateException(BLANK.getMessage());
             }
         }
-    }
+
 
     public static List<Menu> getMenu() {
         return menus.stream()
@@ -49,4 +48,16 @@ public class Order {
         }
         return price;
     }
+
+    public static void validateDrinks() {
+        List<Menu> drinksMenu= menus.stream()
+                .filter(i -> i.getCount()>0)
+                .filter(i ->!i.getCategory().equals(DRINK))
+                .toList();
+
+        if(drinksMenu.isEmpty()){
+            throw new IllegalStateException(INVALID_ORDER.getMessage());
+        }
+    }
+
 }

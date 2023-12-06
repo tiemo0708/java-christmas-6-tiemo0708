@@ -42,7 +42,9 @@ public enum Menu {
         return this.count;
     }
 
-
+    public MenuCategory getCategory() {
+        return this.category;
+    }
     public void setCount(int count) {
         this.count = count;
     }

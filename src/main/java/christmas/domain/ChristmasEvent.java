@@ -1,6 +1,5 @@
 package christmas.domain;
 
-import christmas.domain.VisitDate;
 import christmas.domain.model.Events;
 
 import java.time.DayOfWeek;
@@ -13,13 +12,18 @@ public class ChristmasEvent {
     private static final List<Events> eventsDiscount = new ArrayList<>();
     private static int discountSum;
 
-    public static List<Events> classification(int visitDate) {
-        eventsDiscount.add(dayEvent(visitDate));
-        eventsDiscount.add(dayOfWeekEvent(visitDate));
-        eventsDiscount.add(SpecialEvent(visitDate));
-        return eventsDiscount.stream()
-                .filter(i -> !i.getDiscountKind().equals("없음"))
-                .toList();
+    public static List<Events> classification(int visitDate, int menuPrice) {
+        if(menuPrice>=10_000) {
+            eventsDiscount.add(dayEvent(visitDate));
+            eventsDiscount.add(dayOfWeekEvent(visitDate));
+            eventsDiscount.add(SpecialEvent(visitDate));
+            return eventsDiscount.stream()
+                    .filter(i -> !i.getDiscountKind().equals("없음"))
+                    .toList();
+        }
+
+        return eventsDiscount;
+
     }
     private static Events SpecialEvent(int date) {
         if(date==3||date==10||date==17||date==24||date==25||date==31){

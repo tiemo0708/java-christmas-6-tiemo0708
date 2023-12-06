@@ -25,7 +25,7 @@ public class ChristmasController {
     }
 
     private void printBenefitsDetails(VisitDate visitDate) {
-        List<Events> classification=  ChristmasEvent.classification(visitDate.getDate());
+        List<Events> classification=  ChristmasEvent.classification(visitDate.getDate(),Order.getMenuPrice());
         OutputView.printBenefitsDetails(classification,Order.getMenuPrice());
         ChristmasEvent.setClassification(classification);
     }
@@ -39,9 +39,14 @@ public class ChristmasController {
     }
 
     private void printMenu() {
+            try {
+                Order.validateDrinks();
+            } catch (IllegalStateException e) {
+                OutputView.printError(e);
+                askMenu();
+        }
         OutputView.printMenu(Order.getMenu());
     }
-
     private void printDate(VisitDate visitDate) {
         OutputView.printDate(visitDate.getDate());
     }
